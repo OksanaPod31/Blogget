@@ -12,7 +12,6 @@ module.exports = {
   },
   'rules': {
     'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
     'no-console': 'off',
     'no-loop-func': ['error'],
     'eqeqeq': ['error', 'always'],
@@ -52,8 +51,7 @@ module.exports = {
       'error',
       {'functions': false}
     ],
-    // 'arrow-body-style': ['error', 'as-needed'],
-    'arrow-body-style': 0,
+    'arrow-body-style': ['error', 'as-needed'],
     'arrow-spacing': ['error'],
     'no-confusing-arrow': [
       'error',
@@ -129,7 +127,7 @@ module.exports = {
         'code': 80,
         'tabWidth': 2,
         'ignoreUrls': true,
-        'ignorePattern': 'goog.(module|require)'
+        'ignorePattern': 'goog.(module|require)|d=(\'|")[\\s\\S]*(\'|")'
       }
     ],
     'new-cap': 'error',

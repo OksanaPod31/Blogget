@@ -1,7 +1,12 @@
 import React from 'react';
 import style from './Auth.module.css';
+import PropTypes from 'prop-types';
 
 export const Auth = ({auth}) => {
+  Auth.propTypes = {
+    auth: PropTypes.string
+  };
+
   return (
     <button className={style.button}>
       {auth ? auth :
@@ -36,3 +41,4 @@ export const Auth = ({auth}) => {
     </button>
   );
 };
+
