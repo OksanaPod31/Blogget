@@ -53,6 +53,72 @@
   .grey33 {
     color: var(--grey33);
   }
+ 
+  .bold{
+    font-weight: 600;
+  }
+  
+  .medium{
+    font-weight: 400;
+  }
+  
+  /* Начало кнопки */
+  .fsbt26 {
+    width: 26px;
+    height: 26px;
+  }
+
+  .fsbt24 {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fsbt22 {
+    width: 22px;
+    height: 22px;
+  }
+
+  .fsbt26 {
+    width: 26px;
+    height: 26px;
+  }
+
+  .fsbt24 {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fsbt22 {
+    width: 22px;
+    height: 22px;
+  }
+
+  .fsbt20 {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fsbt18 {
+    width: 18px;
+    height: 18px;
+  }
+
+  .fsbt16 {
+    width: 16px;
+    height: 16px;
+  }
+
+  .fsbt14 {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  .fsbt12 {
+    width: 12px;
+    height: 12px;
+  }
+  /* конец кнопки */
   
   .fs26 {
     font-size: 26px;

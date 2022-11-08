@@ -80,8 +80,6 @@
   .up,
   .down {
     position: relative;
-    width: 12px;
-    height: 12px;
     border: 0;
     background-color: transparent;
     background-size: 100%;
@@ -176,8 +174,6 @@
     
     .up,
     .down {
-      width: 24px;
-      height: 24px;
       transition: outline-color 0.36s ease-in-out,
         background-color 0.36s ease-in-out;
       outline: 1px solid transparent;

@@ -13,6 +13,7 @@ export const Info = (prop) => (
     <Text As='a'
       size={12}
       tsize={14}
+      medium
       color='orange' className={style.linkAuthor}
       href='#author'>{prop.author}</Text>
   </div>
