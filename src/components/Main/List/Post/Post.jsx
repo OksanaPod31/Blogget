@@ -17,7 +17,8 @@ export const Post = ({postData}) => {
       <Info title={title} author={author} />
       <Rating ups={ups}/>
       <Delete />
-      <time className={style.date} dateTime={date}>{formatDate(date)}</time>
+      <time className={style.date} dateTime={postData.date}>
+        {formatDate(postData.date)}</time>
     </li>
   );
 };
