@@ -5,11 +5,27 @@ import {ReactComponent as AuthImg} from './img/login.svg';
 import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
 import {URL} from '../../../api/const';
+import {Logout} from './Logout/Logout';
 
 
-export const Auth = ({token}) => {
+export const Auth = ({delToken, token}) => {
   const [auth, setAuth] = useState({});
+  const [comp, setComp] = useState(false);
+  console.log('удаление', delToken);
+  console.log('ссылка', urlAuth);
 
+
+  const handleInOut = () => {
+    if (!comp) {
+      setComp(true);
+      console.log('лог');
+    }
+
+    if (comp) {
+      setComp(false);
+      console.log('пусто');
+    }
+  };
 
   useEffect(() => {
     if (!token) return;
@@ -21,17 +37,37 @@ export const Auth = ({token}) => {
       },
     }).then(responce => responce.json()
       .then(({name, icon_img: iconImg}) => {
-        const img = iconImg.replace(/\?*$/, '');
+        const img = iconImg.replace(/\?.*$/, '');
         setAuth({name, img});
+      })
+      .catch(err => {
+        console.err(err);
+        setAuth({});
       }));
   }, [token]);
 
   return (
     <div className={style.container}>
       {auth.name ?
-      (<img src={auth.img} title={auth.name} alt={`Аватар: ${auth.name}`}/>) :
+      (<div>
+        <button className={style.btn} onClick={() => handleInOut()}>
+          <img className={style.img} src={auth.img} title={auth.name}
+            alt={`Аватар: ${auth.name}`}/>
+        </button>
+        {comp ? (
+          <div onClick={() => delToken()}>
+            <Logout/>
+          </div>
+        ) : (
+          <div>
+            <Text As='span' />
+          </div>
+        )
+
+        }
+      </div>) :
       (
-        <Text As='a' href={urlAuth}>
+        <Text As='a' className={style.authLink} href={urlAuth}>
           <AuthImg className={style.svg} />
         </Text>
       )
@@ -41,6 +77,7 @@ export const Auth = ({token}) => {
 };
 
 Auth.propTypes = {
-  token: PropTypes.string
+  token: PropTypes.string,
+  delToken: PropTypes.func,
 };
 

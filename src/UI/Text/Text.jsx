@@ -31,11 +31,16 @@ export const Text = prop => {
     {[style[`fst${dsize}`]]: dsize},
   );
 
-  return <As className={classes} href={href} onClick={onClick}>{children}</As>;
+  return <As className={classes} href={href}
+    onClick={onClick}>{children}</As>;
 };
 
 Text.propTypes = {
-  As: PropTypes.string,
+  As: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.func,
+  ]),
   color: PropTypes.string,
   size: PropTypes.number,
   tsize: PropTypes.number,
@@ -50,4 +55,5 @@ Text.propTypes = {
   center: PropTypes.bool,
   bold: PropTypes.bool,
   medium: PropTypes.bool,
+
 };
