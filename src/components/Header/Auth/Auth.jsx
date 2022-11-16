@@ -43,6 +43,9 @@ export const Auth = ({delToken, token}) => {
       .catch(err => {
         console.err(err);
         setAuth({});
+        if (responce.status === 401) {
+          localStorage.removeItem('bearer');
+        }
       }));
   }, [token]);
 
@@ -56,7 +59,9 @@ export const Auth = ({delToken, token}) => {
         </button>
         {comp ? (
           <div onClick={() => delToken()}>
-            <Logout/>
+            <a href='/home'>
+              <Logout />
+            </a>
           </div>
         ) : (
           <div>
