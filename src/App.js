@@ -1,6 +1,8 @@
 import {React} from 'react';
 import Header from './components/Header';
 import {Main} from './components/Main/Main';
+import {AuthContextProvider} from './context/authContext';
+import {tokenContext} from './context/tokenContext';
 import {useToken} from './hooks/useToken';
 
 function App() {
@@ -8,10 +10,12 @@ function App() {
 
 
   return (
-    <>
-      <Header token={token} delToken={delToken}/>
-      <Main />
-    </>
+    <tokenContext.Provider value={{token, delToken}}>
+      <AuthContextProvider>
+        <Header />
+        <Main />
+      </AuthContextProvider>
+    </tokenContext.Provider>
   );
 }
 
