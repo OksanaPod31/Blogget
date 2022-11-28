@@ -2,33 +2,29 @@ import {URL} from '../api/const';
 import {useContext, useEffect, useState} from 'react';
 import {tokenContext} from '../context/tokenContext';
 
-
-export const useAuth = () => {
-  const [auth, setAuth] = useState({});
+export const useBest = () => {
   const {token} = useContext(tokenContext);
+  const [postData, setPostData] = useState([]);
 
   useEffect(() => {
     if (!token) return;
     console.log(token);
 
-    fetch(`${URL}/api/v1/me`, {
-      headers: {
-        Authorization: `bearer ${token}`,
-      },
-    })
+    fetch(`${URL}/best`)
       .then(responce => responce.json()
-        .then(({name, icon_img: iconImg}) => {
-          const img = iconImg.replace(/\?.*$/, '');
-          setAuth({name, img});
+        .then(([show]) => {
+          setPostData([show]);
+          console.log(postData);
         })
         .catch(err => {
           console.error(err);
-          setAuth({});
+          setPostData([]);
           if (responce.status === 401) {
             localStorage.removeItem('bearer');
           }
         }));
   }, [token]);
 
-  return [auth];
+  return [postData];
 };
+

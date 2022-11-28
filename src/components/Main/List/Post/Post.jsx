@@ -24,5 +24,5 @@ export const Post = ({postData}) => {
 };
 
 Post.propTypes = {
-  postData: PropTypes.object
+  postData: PropTypes.array,
 };

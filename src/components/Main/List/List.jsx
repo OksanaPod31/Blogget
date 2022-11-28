@@ -1,11 +1,12 @@
-/* eslint-disable react/jsx-key */
 import React from 'react';
 import style from './List.module.css';
 import Post from './Post';
+import {useBest} from '../../../hooks/useBest';
 
 export const List = () => {
-  const postsData = [
-    {
+  const postsData = useBest([]);
+  console.log(postsData);
+  /* {
       thumbnail: '',
       author: 'Nickname1',
       ups: 77,
@@ -37,7 +38,7 @@ export const List = () => {
       title: 'Title4',
       id: '178',
     },
-  ];
+  ];*/
 
   return (
     <ul className={style.list}>
