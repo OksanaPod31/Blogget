@@ -7,22 +7,26 @@ export const useBest = () => {
   const [postData, setPostData] = useState([]);
 
   useEffect(() => {
-    if (!token) return;
-    console.log(token);
-
-    fetch(`${URL}/best`)
-      .then(responce => responce.json()
-        .then(([show]) => {
-          setPostData([show]);
-          console.log(postData);
-        })
-        .catch(err => {
-          console.error(err);
-          setPostData([]);
-          if (responce.status === 401) {
-            localStorage.removeItem('bearer');
-          }
-        }));
+    if (!token)console.log('нет токена');
+    if (token) {
+      fetch(`${URL}/best`, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      })
+        .then(responce => responce.json()
+          .then((posts) => {
+            setPostData(posts);
+            console.log(posts, 'оно');
+          })
+          .catch(err => {
+            console.error(err);
+            setPostData([]);
+            if (responce.status === 401) {
+              localStorage.removeItem('bearer');
+            }
+          }));
+    }
   }, [token]);
 
   return [postData];

@@ -6,6 +6,7 @@ import {tokenContext} from '../context/tokenContext';
 export const useAuth = () => {
   const [auth, setAuth] = useState({});
   const {token} = useContext(tokenContext);
+  console.log(URL, 'это ссылка');
 
   useEffect(() => {
     if (!token) return;

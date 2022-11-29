@@ -12,17 +12,22 @@ export const Post = ({postData}) => {
   console.log(title, author, ups, date);
 
   return (
-    <li className={style.post}>
-      <img className={style.img} src={notphoto} alt={title} />
-      <Info title={title} author={author} />
-      <Rating ups={ups}/>
-      <Delete />
-      <time className={style.date} dateTime={postData.date}>
-        {formatDate(postData.date)}</time>
-    </li>
+    <div>
+      {(postData !== null) ?
+  (<li className={style.post}>
+    <img className={style.img} src={notphoto} alt={title} />
+    <Info title={title} author={author} />
+    <Rating ups={ups}/>
+    <Delete />
+    <time className={style.date} dateTime={postData.date}>
+      {formatDate(postData.date)}</time>
+  </li>) : (
+    <p>Записей нет</p>
+  )}
+    </div>
   );
 };
 
 Post.propTypes = {
-  postData: PropTypes.array,
+  postData: PropTypes.object,
 };
